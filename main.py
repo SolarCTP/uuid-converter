@@ -6,15 +6,10 @@ from sys import argv
 import glob
 import requests
 
-
-
+# Specify an API to fetch dd
 converter = "http://tools.glowingmines.eu/convertor/uuid/"
-language = "en"
-print(converter)
 
-# Exception Formatter (as in normal Python exception handling)
-
-# Take old UUID and get new UUID from converter, than rename each file
+# Take old UUID (if valid) and get new UUID from "converter", than rename each file
 def convert_uuid(datfile):
 
     uuid = datfile[-40:-4].strip("-")
@@ -37,7 +32,7 @@ if not data_folder:
     quit()
 
 datafiles_list = glob.glob(data_folder + "/*.dat")
-invalid_uuids = []
+invalid_uuids = [] # all invalid (non-premium or wrong) UUIDs will be added here
 if len(datafiles_list) == 0:
     print("The selected folder does not contain any .DAT files")
 else:
